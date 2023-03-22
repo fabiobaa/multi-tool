@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+$indigo:  #6610f2;
+$primary: $indigo;
+// $light: #202123;
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+
+// $theme-colors: (
+//   "primary":    #6610f2,
+//   "secondary":  $secondary,
+//   "success":    $success,
+//   "info":       $info,
+//   "warning":    $warning,
+//   "danger":     $danger,
+//   "light":      $light,
+//   "dark":       $dark
+// );
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import '../node_modules/material-symbols/index.css';
+@import 'assets/scss/global.scss';
+@include color-mode(dark) {
+    // CSS variable overrides here...
+}
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+
+
