@@ -1,9 +1,217 @@
+:root {
+  --bg-primary-light: #f3ecff;
+  --bg-success-light: #e5f3ef;
+  --bg-danger-light: #f3e5e5;
+  --bg-warning-light: #f1eee1;
+}
 
-.page {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 100vh !important;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
+.bg-bg-primary-light {
+  background-color: var(--bg-primary-light);
+}
+
+.bg-bg-success-light {
+  background-color: var(--bg-primary-light);
+}
+.bg-bg-danger-light {
+  background-color: var(--bg-danger-light);
+}
+.bg-bg-warning-light {
+  background-color: var(--bg-warning-light);
+}
+
+// .page {
+//   display: flex;
+//   flex-wrap: nowrap;
+//   height: 100vh !important;
+//   max-height: 100vh;
+//   overflow-x: auto;
+//   overflow-y: hidden;
+// }
+
+div.owl-stage-outer.ng-star-inserted {
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #f3ecff;
+}
+
+button.icon {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+}
+
+a.icon {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  display: inline-block;
+  line-height: 42px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(197, 164, 255, 0.322);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease-out, height 0.4s ease-out;
+}
+
+.ripple:active:after {
+  width: 300%;
+  height: 300%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.circle {
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  text-align: center;
+  flex: 0 0 auto;
+  padding: 7px;
+  border-radius: 50%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.circle:hover {
+  background-color: #f2eef9;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tippy-arrow {
+  color: var(--bs-indigo);
+}
+
+.tippy-box {
+  background-color: var(--bs-indigo);
+  color: var(--bs-white);
+}
+
+.littleSuccess {
+  background-color: var(--bs-white);
+  color: var(--bs-teal);
+}
+.littleError {
+  background-color: var(--bs-white);
+  color: var(--bs-red);
+}
+
+.littleWarning {
+  background-color: var(--bs-white);
+  color: var(--bs-warning);
+}
+
+.littleInfo {
+  background-color: var(--bs-white);
+  color: var(--bs-indigo);
+}
+
+.littleQuestion {
+  background-color: var(--bs-white);
+  color: var(--ion-color-primary-contrast);
+}
+
+.popup-littleAlert {
+  position: absolute !important;
+  bottom: 0px !important;
+  width: 300px !important;
+  box-shadow: none !important;
+}
+
+.popup-comfirDelete {
+  position: absolute !important;
+  bottom: 0px !important;
+  // background-color: #f3ecff !important;
+  width: 300px !important;
+}
+
+.popup-copi {
+  position: absolute !important;
+  width: 400px !important;
+}
+
+.popup-input {
+  position: absolute !important;
+  // background-color: #f3ecff !important;
+  width: 300px !important;
+}
+
+.container-html-comfirDelete {
+  color: var(--bs-indigo) !important;
+}
+
+.swal2-confirm:focus-visible {
+  outline-width: 0px !important;
+}
+
+.animate__animated.animate__fadeInUp {
+  --animate-duration: 0.6s;
+}
+
+.animate__animated.animate__fadeOutDown {
+  --animate-duration: 0.3s;
+}
+
+.animate__animated.animate__zoomIn {
+  --animate-duration: 0.6s;
+}
+
+.animate__animated.animate__zoomOut {
+  --animate-duration: 0.2s;
+}
+
+.animate__animated.animate__fadeInDown {
+  --animate-duration: 0.2s;
+}
+
+.animate__animated.animate__fadeOutUp {
+  --animate-duration: 0.3s;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: solid 2px var(--bs-indigo);
+}
+
+.owl-item {
+  width: 240px !important;
+}
+
+.center-center {
+  display: grid;
+  place-items: center;
 }

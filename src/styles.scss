@@ -1,9 +1,23 @@
 $indigo:  #6610f2;
 $primary: $indigo;
-// $light: #202123;
+$card-border-width: 0px;
+$tooltip-bg: $indigo;
+// $light: #404145;
+
 
 @import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+
+// 5. Include remainder of required parts
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import 'animate.css';
 
 
 // $theme-colors: (
@@ -17,10 +31,16 @@ $primary: $indigo;
 //   "dark":       $dark
 // );
 
-
+@import '../node_modules/sweetalert2/src/sweetalert2.scss';
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import '../node_modules/material-symbols/index.css';
 @import 'assets/scss/global.scss';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import '../node_modules/tippy.js/dist/tippy.css';
+@import '../node_modules/tippy.js/dist/backdrop.css';
+
+
 @include color-mode(dark) {
     // CSS variable overrides here...
 }
@@ -33,5 +53,12 @@ $primary: $indigo;
   'opsz' 48
 }
 
+.fill-icon {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 300,
+  'GRAD' 200,
+  'opsz' 48
+}
 
 

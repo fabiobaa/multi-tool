@@ -10,10 +10,7 @@ export class InicioComponent implements OnInit {
    
    }
   ngOnInit() {
-    // this._indexedDB.initDb();
-    // this._indexedDB.addRegistro({Nombre:"Fabian", Apellido:"Obando"});
-    this._indexedDB.addRegistro({Id: 1, Nombre:"Lina", Apellido:"Rojas"},"prueba");
-    // console.log(this._indexedDB.getRegistros());
+  
   }
 
   

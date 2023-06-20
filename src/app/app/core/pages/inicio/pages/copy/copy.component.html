@@ -1,6 +1,358 @@
-<div class="page pt-2 pb-2 pe-2">
-    <div class="rounded bg-light mh-100  w-100">
-        <p>copy works!</p>
+<div class="pt-2 pb-2 pe-2">
+  <div class="rounded bg-light w-100" style="height: 97vh">
+    <div class="row m-0">
+      <div class="col-3 p-2 pt-0">
+        <div class="row m-0 mt-3">
+          <div class="col bg-bg-primary-light rounded p-2">
+            <perfect-scrollbar
+              [autoPropagation]="true"
+              style="height: 92vh"
+              class="position-relative "
+            >
+              <div class="row m-0 p-1" *ngIf="this.isFavoritos else sinFavoritos">
+                <div class="col-12 p-0">
+                  <div
+                    class="card bg-white mb-2 mt-2 border-start border-4 border-primary"
+                    *ngFor="let copia of copiasFavoritas"
+                  >
+                    <div class="card-body ps-0 pe-0 pt-1 pb-1">
+                      <div class="row m-0 align-items-center">
+                        <div class="col-9 ps-2 pt-1 p-0 text-start">
+                          <h6 class="card-subtitle mb-0 text-muted ps-2">
+                            {{ copia.nombre }}
+                          </h6>
+                          <div class="row align-items-center">
+                            <div class="col-2 p-0">
+                              <span class="material-symbols-rounded ps-2 pt-1">
+                                arrow_right
+                              </span>
+                            </div>
+                            <div class="col-10 p-0">
+                              <small class="text-muted">
+                                {{ copia.nombreCategoria }}</small
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-3 p-0 text-center">
+                          <a
+                            class="pe-auto cursor-pointer copia"
+                            (click)="copyText(copia.texto, $event)"
+                          >
+                            <span
+                              class="material-symbols-rounded fs-3 circle ripple"
+                            >
+                              content_copy
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ng-template #sinFavoritos>
+                <div class="no-favorito text-center m-0 center-center"  style="height: 92vh">
+                  <h6 class="m-2 text-primary">Sin Favoritos</h6>
+              </div>
+              </ng-template>
+            </perfect-scrollbar>
+          </div>
+        </div>
+      </div>
+      <div class="col-9 pt-2 pt-0">
+        <div class="row m-0">
+          <div class="col-11 p-0 pt-2">
+            <div *ngIf="!this.isCategoria else sinCategorias" >
+              <owl-carousel-o
+              #owlCarousel
+              [options]="customOptions"
+              class="nav nav-pills mb-2 position-relative"
+              (wheel)="onMouseWheel($event)" >
+              <ng-template
+                carouselSlide
+                *ngFor="let categoria of this.categorias; let i = index"
+                >
+                
+                  <!-- <div class="btn-group" role="group" style="min-width: 92%;">
+                    <button
+                    (click)="consultarCopiasPorCategoria(categoria.idCategoria)"
+                    class="nav-link p-2 rounded-end-0"
+                    [class.active]="i === tabActivo"
+                    [class.no-active]="i != tabActivo"
+                    (click)="tabActivo = i"
+                    [attr.id]="'pills-' + categoria.nombre.toLowerCase() + '-tab'"
+                    data-bs-toggle="pill"
+                    [attr.data-bs-target]="
+                      '#pills-' + categoria.nombre.toLowerCase()
+                    "
+                    type="button"
+                    role="tab"
+                    [attr.aria-controls]="'pills-' + categoria.nombre.toLowerCase()"
+                    [attr.aria-selected]="i === tabActivo"
+                    style="min-width: 80%;"
+                  >
+                    {{ categoria.nombre }}
+                  </button>
+                    <button type="button"  [class.active]="i == tabActivo"  [class.no-active]="i != tabActivo" class="btn btn-primary ripple p-0 ps-1 pe-2 border-0 ">
+                      <span  class="material-symbols-rounded pt-1"> delete </span>
+                    </button>
+                    <button type="button"  [class.active]="i == tabActivo"  [class.no-active]="i != tabActivo" class="btn btn-primary ripple p-0 border-0 ">
+                      <span  class="material-symbols-rounded pt-1"> edit </span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item">Eliminar</a></li>
+                      <li><a class="dropdown-item">Renombrar</a></li>
+                    </ul>
+
+                  </div> -->
+
+                  <div class="btn-group" role="group" aria-label="Basic example"   style="min-width: 80%;">
+                    <button type="button" class="btn btn-primary"
+                    (click)="consultarCopiasPorCategoria(categoria.idCategoria)"
+                    class="nav-link p-2 rounded-end-0 ps-1 pe-1"
+                    [class.active]="i === tabActivo"
+                    [class.no-active]="i != tabActivo"
+                    (click)="tabActivo = i"
+                    [attr.id]="'pills-' + categoria.nombre.toLowerCase() + '-tab'"
+                    data-bs-toggle="pill"
+                    [attr.data-bs-target]="
+                      '#pills-' + categoria.nombre.toLowerCase()
+                    "
+                    type="button"
+                    role="tab"
+                    [attr.aria-controls]="'pills-' + categoria.nombre.toLowerCase()"
+                    [attr.aria-selected]="i === tabActivo"
+                    style="min-width: 80%;"
+                    > {{ categoria.nombre }}</button>
+                    <button type="button" class="btn btn-primary  p-1 border-0"   [class.no-active]="i != tabActivo" (click)="actlizarCategoria(categoria.idCategoria)">
+                      <span  class="material-symbols-rounded pt-1"> edit </span>
+                    </button>
+                    <button type="button" class="btn btn-primary p-1 border-0"  [class.no-active]="i != tabActivo" (click)="elimarCategoria(categoria.idCategoria)">
+                      <span  class="material-symbols-rounded pt-1 "> delete </span>
+                    </button>
+                  </div>
+                
+
+              </ng-template>
+              
+             
+              </owl-carousel-o>
+            </div>
+            <ng-template #sinCategorias >
+              <div class="no-categoria text-center mb-2">
+                <h6 class="m-2 text-primary">Sin categorias</h6>
+            </div>
+              
+            </ng-template>
+          </div>
+          <div class="col-1 rounded pt-2 pb-2">
+                <a
+                class="pe-auto cursor-pointer" (click)="agregarCategoria()">
+                <span class="material-symbols-rounded fs-2 ripple circle">
+                  add_circle
+                </span>
+              </a>
+          </div>
+        </div>
+
+        <div class="row m-0 mb-2">
+          <div class="col-12 m-0 bg-white rounded pt-2 pb-2">
+            <div class="row m-0">
+              <div class="col-7 ps-0">
+                <a
+                  class="pe-auto cursor-pointer"
+                  (click)="toggleFavorite(copia)"
+                >
+                  <span class="material-symbols-rounded fs-3 ripple circle">
+                    grade
+                  </span>
+                </a>
+                <a 
+                class="pe-auto cursor-pointer" (click)="agregarCopia()">
+                <span class="material-symbols-rounded fs-3 ripple circle" >
+                  add
+                </span>
+              </a>         
+              </div>
+              <div class="col-5 pe-0">
+                <div class="input-group input-group-sm pt-1">
+                  <span class="input-group-text">
+                    <span class="material-symbols-rounded text-primary">
+                      search
+                    </span>
+                  </span>
+                  <input
+                    [(ngModel)]="textFilter"
+                    type="text"
+                    class="form-control"
+                    placeholder="Buscar"
+                    (ngModelChange)="onSearch()"
+                    [disabled]="!this.isCopias"
+                  />
+
+                  <span class="input-group-text">
+                    <a type="button" class="mt-1" (click)="clearText()">
+                      <span class="material-symbols-rounded text-primary">
+                        search_off
+                        </span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" *ngIf="this.isCopias else sinCopias">
+          <div
+            class="tab-pane fade"
+            *ngFor="let categoria of this.categorias ; let i = index"
+            [ngClass]="{ 'active show': tabActivo === i }"
+            (click)="tabActivo = i"
+            [attr.id]="'pills-' + categoria.nombre.toLowerCase()"
+            role="tabpanel"
+            [attr.aria-labelledby]="
+              'pills-' + categoria.nombre.toLowerCase() + '-tab'
+            "
+          >
+            <div class="row m-0">
+              <div class="col-12 p-0 rounded bg-white">
+                <perfect-scrollbar
+                  [autoPropagation]="true"
+                  style="height: 75vh"
+                  class="p-0 position-relative"
+                >
+                  <div class="row m-0 p-1">
+                    <div
+                      class="col-6 pt-2 ps-2 pe-2 pb-2"
+                      *ngFor="let copia of this.filteredCopias"
+                    >
+                      <div class="card shadow-sm">
+                        <div class="card-header bg-light pt-1 pb-1">
+                          <div class="row m-0">
+                            <div class="col-10 p-0 pt-2">
+                              {{ copia.nombre }}
+                            </div>
+                            <div class="col-2 p-0 text-end">
+                              <a
+                                class="pe-auto cursor-pointer"
+                                (click)="toggleFavorite(copia)"
+                              >
+                                <span
+                                  class="material-symbols-rounded fs-3 ripple circle"
+                                  [ngClass]="
+                                    copia.favorito
+                                      ? 'fill-icon'
+                                      : 'material-symbols-rounded'
+                                  "
+                                >
+                                  grade
+                                </span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body pt-1 pb-1">
+                          <div class="row m-0">
+                            <div class="col-6 p-0">
+                              <p class="card-text ellipsis pt-2">
+                                {{ copia.texto }}
+                              </p>
+                            </div>
+                            <div class="col-6 p-0 text-end">
+                              <a class="pe-auto cursor-pointer" (click)="actualizarCopia(copia)">
+                                <span
+                                  class="material-symbols-rounded fs-3 ripple circle"
+                                >
+                                  edit_note
+                                </span>
+                              </a>
+                              <a
+                                class="pe-auto cursor-pointer copiaCategoria"
+                                (click)="copyText(copia.texto, $event)"
+                              >
+                                <span
+                                  class="material-symbols-rounded fs-3 circle ripple"
+                                >
+                                  content_copy
+                                </span>
+                              </a>
+                              <a
+                                class="pe-auto cursor-pointer delete"
+                                (click)="
+                                  eliminarCopia(
+                                    copia.idCopia,
+                                    copia.idCategoria
+                                  )
+                                "
+                              >
+                                <span
+                                  class="material-symbols-rounded fill-icon fs-3 ripple circle text-danger"
+                                >
+                                  delete
+                                </span>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="row align-items-center text-end">
+                            <div class="col pe-3">
+                              <small class="text-muted">
+                                {{ copia.fecha | date }}</small
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </perfect-scrollbar>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #sinCopias>
+          <div class="no-categoria text-center p-0 m-0 center-center" style="height: 73vh">
+            <h6 class="m-2 text-primary">Sin copias</h6>
+        </div>
+        </ng-template>
+
+      </div>
+      <!-- <div class="col-1 pt-2 pt-0 text-center">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#canvasActions"
+        >
+          <span class="material-symbols-rounded pt-1 fs-3"> add_circle </span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="canvasActions">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <div class="row m-0">
+              <div class="col-12">
+                <form [formGroup]="categoriaForm">
+
+                </form>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div> -->
     </div>
   </div>
-  
+</div>
+
+
+

@@ -1,46 +1,38 @@
 <div class="menu pt-2 pb-2 text-center">
-  <div
-    class="rounded d-flex flex-column flex-shrink-0 bg-light mh-100">
+  <perfect-scrollbar [autoPropagation]="true" style="height: 97vh" class="bg-light rounded">
+    <div
+    class="">
     <a
-      class="d-block p-3 link-dark text-decoration-none"
-      title=""
-      data-bs-toggle="tooltip"
-      data-bs-placement="right"
-      data-bs-original-title="Icon-only"
-      aria-describedby="tooltip936279"
-    >
+      class="d-block p-3 link-dark text-decoration-none">
     <img src="./assets/png/logo.png" alt="logo" height="42" width="42">
     </a>
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-      <li class="nav-item">
+      <li class="nav-item item-menu mb-1">
         <a
           routerLink="/inicio/copy"
           routerLinkActive="active"
-          class="nav-link active py-3 border-bottom bg-gradient"
-          aria-current="page"
-          title=""
+          class="nav-link py-3 border-bottom bg-gradient"
+          title="Copis"
           data-bs-toggle="tooltip"
           data-bs-placement="right"
-          data-bs-original-title="Home"
-        >
-          <span class="material-symbols-rounded fs-3"> content_copy </span>
+          data-bs-original-title="Copis">
+          <span class="material-symbols-rounded fs-3">content_copy</span>
         </a>
       </li>
-      <li>
+      <li class="nav-item item-menu mb-1">
         <a
           routerLink="/inicio/sigla"
           routerLinkActive="active"
           class="nav-link py-3 border-bottom bg-gradient"
-          title=""
+          title="Siglas"
           data-bs-toggle="tooltip"
           data-bs-placement="right"
-          data-bs-original-title="Dashboard"
-        >
+          data-bs-original-title="Siglas">
           <span class="material-symbols-rounded fs-3"> font_download </span>
         </a>
       </li>
     </ul>
-    <div class="dropdown border-top">
+    <!-- <div class="dropdown border-top">
       <a
         href="#"
         class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
@@ -67,6 +59,8 @@
         <li><hr class="dropdown-divider" /></li>
         <li><a class="dropdown-item" href="#">Sign out</a></li>
       </ul>
-    </div>
+    </div> -->
   </div>
+  </perfect-scrollbar>
+  
 </div>
