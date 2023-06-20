@@ -132,7 +132,7 @@ export class CopyComponent {
         if (this.categorias.length > 0) {
           if(this.idCategoriaSeleccionada != 0){
             this.consultarCopiasPorCategoria(this.idCategoriaSeleccionada);
-          }else{
+          } else {
             this.consultarCopiasPorCategoria(this.categorias[0].idCategoria);
           }
           this.isCategoria = false;
@@ -305,5 +305,10 @@ export class CopyComponent {
         console.error("Error al copiar texto al portapapeles: ", error);
         instance.setContent("No copiado.");
       });
+  }
+
+  ordenarCopiasxFavorite(){
+    this._alertService.littleAlertInfo({ text: 'No implementado.' });
+
   }
 }
